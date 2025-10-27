@@ -1,0 +1,9 @@
+# keep Procfile and .ebextensions (don’t ignore them)
+# ignore only local/dev clutter
+eb-virt/
+*.pyc
+__pycache__/
+*.log
+.env
+.DS_Store
+.git/

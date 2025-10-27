@@ -1,0 +1,4 @@
+Retrieving logs...
+Logs were saved to /Users/evanfriedman/Documents/STAC/Fall 2025/CS 450/Homework 1/swe1-app/.elasticbeanstalk/logs/251021_194800
+Logs were saved to /Users/evanfriedman/Documents/STAC/Fall 2025/CS 450/Homework 1/swe1-app/.elasticbeanstalk/logs/251021_194800
+Updated symlink at /Users/evanfriedman/Documents/STAC/Fall 2025/CS 450/Homework 1/swe1-app/.elasticbeanstalk/logs/latest
