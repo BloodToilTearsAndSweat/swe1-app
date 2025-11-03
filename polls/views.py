@@ -1,7 +1,9 @@
 from django.db.models import F
+
 # from django.http import Http404, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+
 # from django.template import loader
 from django.urls import reverse
 from .models import Choice, Question
