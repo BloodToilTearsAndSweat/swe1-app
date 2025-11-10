@@ -37,3 +37,27 @@ jobs:
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    # only deploy on pushes to main (not on PRs)
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create deployment package
+        run: |
+          zip -r app.zip . \
+            -x ".git/*" ".github/*" "eb-virt/*" "__pycache__/*" "*.pyc"
+
+      - name: Deploy to Elastic Beanstalk
+        uses: einaregilsson/beanstalk-deploy@v23
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: ${{ secrets.EB_APP_NAME }}
+          environment_name: ${{ secrets.EB_ENV_NAME }}
+          version_label: v-${{ github.run_number }}
+          region: ${{ secrets.AWS_REGION }}
+          deployment_package: app.zip
